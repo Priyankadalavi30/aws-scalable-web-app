@@ -1,0 +1,125 @@
+=========================================
+AWS ALB + AUTO SCALING PROJECT COMMANDS
+=========================================
+
+# Update Server
+sudo yum update -y
+
+# Install Apache Web Server
+sudo yum install httpd -y
+
+# Start Apache Service
+sudo systemctl start httpd
+
+# Enable Apache on Boot
+sudo systemctl enable httpd
+
+# Check Apache Status
+sudo systemctl status httpd
+
+# Create Sample Web Page
+echo "<h1>Welcome to Priyanka AWS Auto Scaling Project</h1>" > /var/www/html/index.html
+
+# Verify Website Content
+cat /var/www/html/index.html
+
+# Restart Apache
+sudo systemctl restart httpd
+
+# Check Open Ports
+sudo netstat -tulnp
+
+# Install Stress Tool for Auto Scaling Test
+sudo yum install stress -y
+
+# Generate CPU Load for 5 Minutes
+stress --cpu 4 --timeout 300
+
+# Generate CPU Load for 10 Minutes
+stress --cpu 4 --timeout 600
+
+# Check CPU Usage
+top
+
+# Check Memory Usage
+free -m
+
+# Check Disk Usage
+df -h
+
+# Check Running Processes
+ps -ef
+
+# Check Instance Hostname
+hostname
+
+# Check Private IP
+hostname -I
+
+# Check Public IP
+curl ifconfig.me
+
+=========================================
+USER DATA SCRIPT
+=========================================
+
+#!/bin/bash
+
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+
+echo "<h1>Welcome to Priyanka AWS Auto Scaling Project</h1>" > /var/www/html/index.html
+
+=========================================
+AUTO SCALING TEST COMMAND
+=========================================
+
+sudo yum install stress -y
+stress --cpu 4 --timeout 300
+
+=========================================
+APACHE SERVICE COMMANDS
+=========================================
+
+sudo systemctl start httpd
+sudo systemctl stop httpd
+sudo systemctl restart httpd
+sudo systemctl status httpd
+sudo systemctl enable httpd
+
+=========================================
+MONITORING COMMANDS
+=========================================
+
+top
+free -m
+df -h
+ps -ef
+hostname
+hostname -I
+
+=========================================
+PROJECT FLOW
+=========================================
+
+Internet User
+     |
+     V
+Application Load Balancer
+     |
+     V
+Target Group
+     |
+     V
+EC2 Instances
+     |
+     V
+Auto Scaling Group
+     |
+     +--> Scale Out (Add Instances)
+     |
+     +--> Scale In (Remove Instances)
+
+=========================================
